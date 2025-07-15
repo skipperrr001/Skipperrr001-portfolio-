@@ -1,32 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About - Skipper's Portfolio</title>
-  <link rel="stylesheet" href="style.css"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Aliyu Kabiru's Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: Cambria, serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .chart-container {
+            width: 100%;
+            max-width: 420px;
+            height: 300px;
+            margin: 1rem auto;
+        }
+    </style>
 </head>
-<body>
-  <header>
-    <h1>Skipper's Portfolio</h1>
-    <nav>
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="projects.html">Projects</a>
-  <a href="contact.html">Contact</a>
-</nav>
-  </header>
+<body class="bg-black text-white">
 
-  <main>
-    <section class="about">
-      <h2>About Me</h2>
-      <p>I’m Aliyu Kabiru from Kano State, Nigeria. I live, school, and work in Kano. I'm a dedicated Forex/Crypto Trader with a strong interest in financial markets.</p>
-      <p>Currently studying Software Engineering at Northwest University, Kano State. I combine my tech skills and entrepreneurial vision to create smart solutions that drive financial growth.</p>
+    <!-- Dark/Light Mode Toggle -->
+    <div class="space-x-4 ml-auto flex">
+        <button id="toggleMode" class="bg-gray-700 text-white px-3 py-1 rounded hover:bg-gray-500">
+            Toggle Light Mode
+        </button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-blue-900 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#home" class="text-white text-2xl font-bold">Skipper's Portfolio</a>
+            <div class="space-x-4">
+                <a href="#home" class="text-white hover:text-gray-300">Home</a>
+                <a href="#about" class="text-white hover:text-gray-300">About</a>
+                <a href="#contact" class="text-white hover:text-gray-300">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="py-16 text-center bg-blue-900 text-white">
+        <div class="container mx-auto">
+            <h1 class="text-4xl font-bold mb-4">Welcome to Skipper's Website</h1>
+            <p class="text-lg">Explore my journey as a Forex/Crypto Trader and Software Engineering student.</p>
+        </div>
     </section>
-  </main>
 
-  <footer>
-    <p>&copy; 2025 Skipper's Portfolio</p>
-  </footer>
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-black text-white">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold mb-4 text-center">About Me</h2>
+            <p class="text-lg mb-6 text-center max-w-3xl mx-auto">
+                I'm Aliyu Kabiru, a dedicated Forex/Crypto Trader with a strong interest in financial markets.
+                Currently, I'm studying Software Engineering at Northwest University, Kano State.
+            </p>
+            <div class="flex flex-wrap justify-center">
+                <div class="chart-container" id="chart1">
+                    <p class="text-center text-gray-400">Loading BTCUSD Chart...</p>
+                </div>
+                <div class="chart-container" id="chart2">
+                    <p class="text-center text-gray-400">Loading ETHUSD Chart...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-blue-900 text-white text-center">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold mb-4">Contact Me</h2>
+            <p class="text-lg mb-2">📞 09038195915</p>
+            <p class="text-lg">Gmail: <a href="mailto:aleeyuhydar2@gmail.com" class="text-blue-300 hover:underline">aleeyuhydar2@gmail.com</a></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white text-center p-4">
+        <p>&copy; All rights reserved. Skipperrr001 2025</p>
+    </footer>
+
+    <!-- TradingView Script -->
+    <script src="https://s3.tradingview.com/tv.js"></script>
+    <script>
+        function loadTradingView() {
+            if (typeof TradingView === 'undefined') {
+                console.warn("TradingView script not loaded.");
+                return;
+            }
+            new TradingView.widget({
+                container_id: "chart1",
+                symbol: "BTCUSD",
+                interval: "D",
+                timezone: "Etc/UTC",
+                theme: "dark",
+                style: "1",
+                locale: "en",
+                width: "100%",
+                height: "300",
+                hide_top_toolbar: true,
+                hide_side_toolbar: false
+            });
+
+            new TradingView.widget({
+                container_id: "chart2",
+                symbol: "ETHUSD",
+                interval: "60",
+                timezone: "Etc/UTC",
+                theme: "dark",
+                style: "1",
+                locale: "en",
+                width: "100%",
+                height: "300",
+                hide_top_toolbar: true,
+                hide_side_toolbar: false
+            });
+        }
+
+        window.addEventListener('load', loadTradingView);
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Toggle dark/light mode
+        document.getElementById('toggleMode').addEventListener('click', function () {
+            document.body.classList.toggle('bg-black');
+            document.body.classList.toggle('bg-white');
+            document.body.classList.toggle('text-white');
+            document.body.classList.toggle('text-black');
+        });
+    </script>
 </body>
 </html>

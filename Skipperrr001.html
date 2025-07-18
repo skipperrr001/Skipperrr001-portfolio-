@@ -22,7 +22,7 @@
 <body class="bg-black text-white">
 
     <!-- Dark/Light Mode Toggle -->
-    <div class="space-x-4 ml-auto flex">
+    <div class="space-x-4 ml-auto flex justify-end p-4">
         <button id="toggleMode" class="bg-gray-700 text-white px-3 py-1 rounded hover:bg-gray-500">
             Toggle Light Mode
         </button>
@@ -35,6 +35,7 @@
             <div class="space-x-4">
                 <a href="#home" class="text-white hover:text-gray-300">Home</a>
                 <a href="#about" class="text-white hover:text-gray-300">About</a>
+                <a href="#media" class="text-white hover:text-gray-300">Media</a>
                 <a href="#contact" class="text-white hover:text-gray-300">Contact</a>
             </div>
         </div>
@@ -63,6 +64,31 @@
                 <div class="chart-container" id="chart2">
                     <p class="text-center text-gray-400">Loading ETHUSD Chart...</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Media Section -->
+    <section id="media" class="py-16 bg-black text-white text-center">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold mb-6">🎧🎥 My Media</h2>
+
+            <!-- Audio -->
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold mb-2">Listen to My Audio</h3>
+                <audio controls class="mx-auto">
+                    <source src="my-audio.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+
+            <!-- Video -->
+            <div>
+                <h3 class="text-xl font-semibold mb-2">Watch My Video</h3>
+                <video controls width="320" height="240" class="mx-auto">
+                    <source src="my-video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
             </div>
         </div>
     </section>
